@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sub Base Course Grading Comparison</title>
+    <link rel="stylesheet" href="plot-style.css">
+    <script src="plotly-latest.min.js"></script>
+</head>
+
+<body>
+    <div id="grading-chart">
+        <script>
+            // ................................CHART DATA............................................
+            // ......................................................................................
+
+            // Finland Sub Base Grading (UL-IN)
+            var finlandSubBaseULIN = {
+                x: [63.0, 31.5, 16.0, 8.0, 4.0, 2.0, 1.0, 0.50, 0.25, 0.125, 0.063],
+                y: [100, 86, 68, 53, 40, 30, 22, 17, 12, 7, 5],
+                mode: 'lines+markers',
+                name: 'Finland Subbase-UL-IN',
+                connectgaps: true,
+                marker: {
+                    color: 'rgba(239, 87, 119,1.0)',
+                    size: 5
+                },
+                line: {
+                    color: 'red',
+                    width: 1.5,
+                    shape: 'linear'
+                }
+            };
+            // Finland Sub Base Grading (LL-IN)
+
+            var finlandSubBaseLLIN = {
+                x: [63.0, 31.5, 16.0, 8.0, 4.0, 2.0, 1.0, 0.50, 0.25, 0.125, 0.063],
+                y: [76, 58, 42, 30, 20, 12, 7, 4, 2, 0, 0],
+                mode: 'lines+markers',
+                name: 'Finland Subbase-LL-IN',
+                connectgaps: true,
+                marker: {
+                    symbol: 'square',
+                    color: 'rgba(100, 0, 128,0.6)',
+                    size: 5
+                },
+                line: {
+                    color: 'red',
+                    width: 1.5,
+                    shape: 'linear'
+                }
+            };
+            // YDS Project - Qarghanotoo Base Course Material Grading
+            var ydsBaseCourseQrghntoo = {
+                x: [63.0, 37.5, 9.5, 4.75, 0.425, 0.075],
+                y: [100.00, 95.00, 61.00, 42.00, 11.50, 4.00],
+                mode: 'lines+markers',
+                name: 'YDS Qarghanotoo Source',
+                connectgaps: true,
+                marker: {
+                    symbol: 'diamond',
+                    color: 'rgba(87, 95, 207,1.0)',
+                    size: 5
+                },
+                line: {
+                    color: 'orange',
+                    width: 3,
+                    shape: 'linear'
+                }
+            };
+            // Iceland - Upper Sub Base Upper Limit
+            var icelandSubBaseUL = {
+                x: [31.5, 16.0, 8.0, 4.0, 2.0, 1.0, 0.50, 0.25, 0.125, 0.063],
+                y: [null, null, 79, 61, 45, 34, 24, 17, 11, 8],
+                mode: 'lines+markers',
+                name: 'Iceland Sub Base UL',
+                connectgaps: true,
+                marker: {
+                    symbol: 'cross',
+                    color: 'rgba(255, 94, 87,1.0)',
+                    size: 5
+                },
+                line: {
+                    color: 'blue',
+                    width: 1.5,
+                    shape: 'linear'
+                }
+            };
+            // Iceland - Upper Sub Base Lower Limit
+            var icelandSubBaseLL = {
+                x: [31.5, 16.0, 8.0, 4.0, 2.0, 1.0, 0.50, 0.25, 0.125, 0.063],
+                y: [71, 50, 35, 25, 16, 9, 5, 3, 1, 1],
+                mode: 'lines+markers',
+                name: 'Iceland Sub Base UL',
+                connectgaps: true,
+                marker: {
+                    symbol: 'hexagon',
+                    color: 'rgba(75, 207, 250,1.0)',
+                    size: 5
+                },
+                line: {
+                    color: 'blue',
+                    width: 1.5,
+                    shape: 'linear'
+                }
+            };
+            // ASTM D 2940 Sub Base Grading Limits UL
+            var astmd2940SubBaseUL = {
+                x: [50.00, 37.5, 4.75, 0.075],
+                y: [100, 100, 60, 12],
+                mode: 'lines+markers',
+                name: 'ASTM D 2940 Sub Base UL',
+                connectgaps: true,
+                marker: {
+                    symbol: 'star',
+                    color: 'rgba(234, 181, 67,1.0)',
+                    size: 5
+                },
+                line: {
+
+                    color: 'green',
+                    width: 2,
+                    shape: 'linear'
+                }
+            };
+            // ASTM D 2940 Sub Base Grading Limits LL
+            var astmd2940SubBaseLL = {
+                x: [50.00, 37.5, 4.75, 0.075],
+                y: [100, 90, 30, 0],
+                mode: 'lines+markers',
+                name: 'ASTM D 2940 Sub Base LL',
+                connectgaps: true,
+                marker: {
+                    symbol: 'star',
+                    color: 'rgba(234, 181, 67,1.0)',
+                    size: 5
+                },
+                line: {
+
+                    color: 'green',
+                    width: 2,
+                    shape: 'linear'
+                }
+            };
+            // ASTM D 2940 Base Course Grading Limits UL
+            var astmd2940BaseUL = {
+                x: [50.00, 37.5, 19.00, 9.50, 4.75, 0.600, 0.075],
+                y: [100, 100, 92, 70, 55, 25, 8],
+                mode: 'lines+markers',
+                name: 'ASTM D 2940 Base UL',
+                connectgaps: true,
+                marker: {
+                    symbol: 'star',
+                    color: 'green',
+                    size: 5
+                },
+                line: {
+
+                    color: 'rgba(280, 2, 200,1.0)',
+                    width: 2,
+                    shape: 'linear'
+                }
+            };
+            // ASTM D 2940 Base Course Grading Limits LL
+            var astmd2940BaseLL = {
+                x: [50.00, 37.5, 19.00, 9.50, 4.75, 0.600, 0.075],
+                y: [100, 95, 70, 50, 35, 12, 0],
+                mode: 'lines+markers',
+                name: 'ASTM D 2940 Base LL',
+                connectgaps: true,
+                marker: {
+                    symbol: 'star',
+                    color: 'blue',
+                    size: 5
+                },
+                line: {
+
+                    color: 'rgba(280, 2, 200,1.0)',
+                    width: 2,
+                    shape: 'linear'
+                }
+            };
+
+            // .....................................PLOT............................................
+            var data = [finlandSubBaseLLIN, finlandSubBaseULIN, ydsBaseCourseQrghntoo, icelandSubBaseUL, icelandSubBaseLL, astmd2940SubBaseUL, astmd2940SubBaseLL,astmd2940BaseUL,astmd2940BaseLL];
+            var layout = {
+                title: {
+                    text: '<b>Sub Base Material Grading Comparison</b><br>Comparison of Norway/US/Denmark/Iceland Specifications w.r.t Qarghanotoo Source Grading',
+                    font: {
+                        size: 20,
+                        color: '#2b0329'
+                    }
+                },
+                width: 1300,
+                height: 580,
+                paper_bgcolor: 'rgba(234, 181, 67,0.3)',
+                plot_bgcolor: '#fbf9fd',
+                xaxis: {
+                    title: '<b>Sieve Size, mm</b>',
+                    showgrid: true,
+                    zeroline: true,
+                    showline: true,
+                    type: 'log',
+                    autorange: true,
+                    gridcolor: '#e8dff5'
+
+                },
+                yaxis: {
+                    title: '<b>Percent Passing, %</b>',
+                    range: [0, 110],
+                    showgrid: true,
+                    showline: true,
+                    gridcolor: '#e8dff5'
+
+                },
+                legend: {
+                    y: 0.02,
+                    x: 0.83,
+                    traceorder: 'reversed',
+                    font: {
+                        size: 11
+                    }
+                }
+            };
+
+
+            Plotly.newPlot('grading-chart', data, layout);
+        </script>
+    </div>
+       <a href="index.html"
+        style="padding:5px; color:chocolate; text-decoration: none; border-bottom-style: solid; border-right-style: solid;">Go
+        Back</a>
+</body>
+
+</html>
