@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div id="grading-chart">
+    <div id="grading-chart" style="height:600px;" >
         <script>
             // ................................CHART DATA............................................
             // ......................................................................................
@@ -52,10 +52,46 @@
                     shape: 'linear'
                 }
             };
+            // Finland Sub Base Grading (UL-OUT)
+            var finlandSubBaseULOUT = {
+                x: [63.0, 31.5, 16.0, 8.0, 4.0, 2.0, 1.0, 0.50, 0.25, 0.125, 0.063],
+                y: [100, 100, 100, 65, 50, 38, 28, 20, 14, 10, 8],
+                mode: 'lines+markers',
+                name: 'Finland Subbase-UL-OUT',
+                connectgaps: true,
+                marker: {
+                    color: 'rgba(239, 87, 119,1.0)',
+                    size: 5
+                },
+                line: {
+                    color: 'rgba(100, 0, 128,0.6)',
+                    width: 1.5,
+                    shape: 'linear'
+                }
+            };
+            // Finland Sub Base Grading (LL-OUT)
+
+            var finlandSubBaseLLOUT = {
+                x: [63.0, 31.5, 16.0, 8.0, 4.0, 2.0, 1.0, 0.50, 0.25, 0.125, 0.063],
+                y: [60, 45, 31, 20, 12, 6, 2, 0, 0, 0, 0],
+                mode: 'lines+markers',
+                name: 'Finland Subbase-LL-OUT',
+                connectgaps: true,
+                marker: {
+                    symbol: 'square',
+                    color: 'rgba(239, 87, 119,1.0)',
+                    size: 5
+                },
+                line: {
+                    color: 'rgba(100, 0, 128,0.6)',
+                    width: 1.5,
+                    shape: 'linear'
+                }
+            };
             // YDS Project - Qarghanotoo Base Course Material Grading
             var ydsBaseCourseQrghntoo = {
                 x: [63.0, 37.5, 9.5, 4.75, 0.425, 0.075],
-                y: [100.00, 95.00, 61.00, 42.00, 11.50, 4.00],
+                y: [100.00, 94.97, 61.50, 42.13, 11.33, 4.07],
                 mode: 'lines+markers',
                 name: 'YDS Qarghanotoo Source',
                 connectgaps: true,
@@ -182,12 +218,50 @@
                     shape: 'linear'
                 }
             };
+            // UK Type 2 Unbound Mixtres UL
+            var ukType2UL = {
+                x: [63.00, 31.5, 16.00, 8.00, 4.00, 1.00, 0.063],
+                y: [100, 99, 90, 75, 60, 35, 9],
+                mode: 'lines+markers',
+                name: 'UK Type 2 UL',
+                connectgaps: true,
+                marker: {
+                    symbol: 'star',
+                    color: 'red',
+                    size: 5
+                },
+                line: {
+
+                    color: 'rgba(80, 180, 200,1.0)',
+                    width: 2,
+                    shape: 'linear'
+                }
+            };
+            // UK Type 2 Unbound Mixtres LL
+            var ukType2LL = {
+                x: [63.00, 31.5, 16.00, 8.00, 4.00, 1.00, 0.063],
+                y: [100, 75, 50, 30, 15, 0, 0],
+                mode: 'lines+markers',
+                name: 'UK Type 2 LL',
+                connectgaps: true,
+                marker: {
+                    symbol: 'star',
+                    color: 'red',
+                    size: 5
+                },
+                line: {
+
+                    color: 'rgba(80, 180, 200,1.0)',
+                    width: 2,
+                    shape: 'linear'
+                }
+            };
 
             // .....................................PLOT............................................
-            var data = [finlandSubBaseLLIN, finlandSubBaseULIN, ydsBaseCourseQrghntoo, icelandSubBaseUL, icelandSubBaseLL, astmd2940SubBaseUL, astmd2940SubBaseLL,astmd2940BaseUL,astmd2940BaseLL];
+            var data = [finlandSubBaseLLIN, finlandSubBaseULIN, ydsBaseCourseQrghntoo, icelandSubBaseUL, icelandSubBaseLL, astmd2940SubBaseUL, astmd2940SubBaseLL,astmd2940BaseUL,astmd2940BaseLL,ukType2UL,ukType2LL,finlandSubBaseULOUT,finlandSubBaseLLOUT];
             var layout = {
                 title: {
-                    text: '<b>Sub Base Material Grading Comparison</b><br>Comparison of Norway/US/Denmark/Iceland Specifications w.r.t Qarghanotoo Source Grading',
+                    text: '<b>Sub Base Material Grading Comparison</b><br>Comparison of UK/US/Finland/Iceland Specifications w.r.t Qarghanotoo Source Grading',
                     font: {
                         size: 20,
                         color: '#2b0329'
@@ -216,8 +290,8 @@
 
                 },
                 legend: {
-                    y: 0.02,
-                    x: 0.83,
+                    y: 0.97,
+                    x: 0.01,
                     traceorder: 'reversed',
                     font: {
                         size: 11
@@ -229,6 +303,16 @@
             Plotly.newPlot('grading-chart', data, layout);
         </script>
     </div>
+    <div style="padding:10px;">
+        Note:<br>
+        <ol>
+            <li>In Finnish specifications for base and sub-base materials there is an inner and outer grading area (IN and OUT). Maximum 35 % of tested curves are allowed to differ from the inner area.Maximum 10 % of tested curves are allowed to differ from the outer area.</li>
+            <li>As per MCHW(UK) Type 2 unbound mixture shall be made from natural sands, gravels, and hence grading for Type 2 was referred to in the chart.</li>
+        </ol>
+
+
+    </div>
+   
        <a href="index.html"
         style="padding:5px; color:chocolate; text-decoration: none; border-bottom-style: solid; border-right-style: solid;">Go
         Back</a>
